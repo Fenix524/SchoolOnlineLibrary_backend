@@ -14,9 +14,9 @@ import { DB_PATH, PORT } from './config.js'
 const app = express()
 
 mongoose
-	.connect(DB_PATH)
+	.connect(process.env.MONGODB_URI)
 	.then(() => {
-		app.listen(PORT, () => {
+		app.listen(process.env.PORT || 3333, () => {
 			console.log('Server is running. Use our API on port: ' + PORT)
 		})
 		console.log('Database connection successful')
@@ -41,7 +41,8 @@ app.use(morgan('tiny'))
 app.use(cors())
 app.use(express.json())
 
-const PREFIX = '/api/v1'
+// const PREFIX = '/api/v1'
+const PREFIX = ''
 
 app.use(PREFIX + '/books', booksRouter)
 app.use(PREFIX + '/users', usersRouter)
