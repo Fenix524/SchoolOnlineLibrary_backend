@@ -9,7 +9,7 @@ import authRouter from './routes/authRouter.js'
 import authorRouter from './routes/authorRouter.js'
 import genreRouter from './routes/genreRouter.js'
 import multer from 'multer'
-import { DB_PATH, PORT } from './config.js'
+// import { DB_PATH, PORT } from './config.js'
 
 const app = express()
 
