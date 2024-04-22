@@ -9,15 +9,16 @@ import authRouter from './routes/authRouter.js'
 import authorRouter from './routes/authorRouter.js'
 import genreRouter from './routes/genreRouter.js'
 import multer from 'multer'
-// import { DB_PATH, PORT } from './config.js'
+import { DB_PATH } from './config.js'
 
 const app = express()
 
 mongoose
-	.connect(process.env.MONGODB_URI)
+	.connect(process.env.MONGODB_URI || DB_PATH)
 	.then(() => {
-		app.listen(process.env.PORT || 3333, () => {
-			console.log('Server is running. Use our API on port: ' + PORT)
+		const port = process.env.PORT || 3333
+		app.listen(port, () => {
+			console.log('Server is running. Use our API on port: ' + port)
 		})
 		console.log('Database connection successful')
 	})
