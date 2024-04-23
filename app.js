@@ -14,9 +14,11 @@ import { DB_PATH } from './config.js'
 const app = express()
 
 mongoose
-	.connect(process.env.MONGODB_URI || DB_PATH)
+	.connect(DB_PATH)
 	.then(() => {
-		const port = process.env.PORT || 3333
+		// process.env.MONGODB_URI ||
+		// process.env.PORT
+		const port = 3333
 		app.listen(port, () => {
 			console.log('Server is running. Use our API on port: ' + port)
 		})

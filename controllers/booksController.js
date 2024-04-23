@@ -11,10 +11,6 @@ export const getAllBooks = createCRUDHandler(
 	['name'],
 	['author', 'genre']
 )
-// export const getAllBooks = asyncWrapper(async (req, res, next) => {
-// 	const books = await bookService.getAllBooks()
-// 	res.json(books)
-// })
 
 export const getOneBook = asyncWrapper(async (req, res, next) => {
 	const { id } = req.params
